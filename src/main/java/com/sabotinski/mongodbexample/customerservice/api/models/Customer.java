@@ -4,7 +4,7 @@ import com.google.gson.Gson;
 
 public class Customer {
     
-    public static int CURRENT_SCHEMA_VERSION = 2;
+    public static int CURRENT_SCHEMA_VERSION = 3;
     
     private String customerid;
     private int schemaVersion;
@@ -12,7 +12,8 @@ public class Customer {
     private String customerType;
     private List<Address> addresses;
     private boolean isActive;
-    private String name;
+    private String firstname;
+    private String lastname;
     
     public String getCustomerid() {
         return customerid;
@@ -54,20 +55,28 @@ public class Customer {
         this.schemaVersion = schemaVersion;
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
     public String getCustomerType() {
         return customerType;
     }
 
     public void setCustomerType(String customerType) {
         this.customerType = customerType;
+    }
+
+    public String getFirstname() {
+        return firstname;
+    }
+
+    public void setFirstname(String firstname) {
+        this.firstname = firstname;
+    }
+
+    public String getLastname() {
+        return lastname;
+    }
+
+    public void setLastname(String lastname) {
+        this.lastname = lastname;
     }
 
     @Override

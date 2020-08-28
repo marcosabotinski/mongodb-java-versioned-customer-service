@@ -83,6 +83,7 @@ public class CustomerDao {
         
         switch (schemaVersion) {
             case 1: upgradeFromV1(doc); break;
+            case 2: upgradeFromV2(doc); break;
         }
         return true;
     }
@@ -90,6 +91,22 @@ public class CustomerDao {
     private void upgradeFromV1(Document doc) {
         doc.append("customerType", "B2C");
         doc.put("schemaVersion", 2);
+        upgradeFromV2(doc);
+    }
+
+    private void upgradeFromV2(Document doc) {
+        if (doc.containsKey("name")) { 
+            var fullname = doc.get("name", "");
+            var splited = fullname.split("\\s+");
+            if (splited.length == 2) {
+                doc.put("firstname", splited[0]);
+                doc.put("lastname", splited[1]);
+            } else {
+                doc.put("firstname", "");
+                doc.put("lastname", fullname);
+            }
+        }
+        doc.put("schemaVersion", 3);
     }
 
 }
