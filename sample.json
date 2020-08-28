@@ -1,0 +1,20 @@
+{
+    "schemaVersion": 1,
+    "customerid": "CU120310",
+    "name": "Marco Sabotinski",
+    "email": "abc.123@example.com",
+    "isActive": true,
+    "addresses": [
+        {
+            "street": "Hauptstr. 10",
+            "postcode": "12390",
+            "city": "Koeln",
+            "countryCode": "DE"
+        }
+    ]
+}
+
+
+
+
+
