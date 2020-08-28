@@ -1,7 +1,8 @@
 {
-    "schemaVersion": 1,
+    "schemaVersion": 2,
     "customerid": "CU120310",
     "name": "Marco Sabotinski",
+    "customerType": "B2C",
     "email": "abc.123@example.com",
     "isActive": true,
     "addresses": [

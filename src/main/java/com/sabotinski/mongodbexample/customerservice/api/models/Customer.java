@@ -4,11 +4,12 @@ import com.google.gson.Gson;
 
 public class Customer {
     
-    public static int CURRENT_SCHEMA_VERSION = 1;
+    public static int CURRENT_SCHEMA_VERSION = 2;
     
     private String customerid;
     private int schemaVersion;
     private String email;
+    private String customerType;
     private List<Address> addresses;
     private boolean isActive;
     private String name;
@@ -59,6 +60,14 @@ public class Customer {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getCustomerType() {
+        return customerType;
+    }
+
+    public void setCustomerType(String customerType) {
+        this.customerType = customerType;
     }
 
     @Override

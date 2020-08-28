@@ -62,10 +62,34 @@ public class CustomerDao {
     }
 
     private Customer decode(Document doc) { 
+
+        var didUpgrade = handleUpgrade(doc);
+
         var reader = new BsonDocumentReader(doc.toBsonDocument(BsonDocument.class, pojoCodecRegistry));
         var codec = customerCodecProvider.get(Customer.class, pojoCodecRegistry);
         var customer = codec.decode(reader, DecoderContext.builder().build());
+
+        if (didUpgrade) { 
+            customerCollection.replaceOne(eq("_id", doc.get("_id", new ObjectId())), customer);
+        }
         return customer;
+    }
+
+    private boolean handleUpgrade(Document doc) { 
+        var schemaVersion = doc.get("schemaVersion", 1).intValue();
+        if (schemaVersion == Customer.CURRENT_SCHEMA_VERSION) { 
+            return false;
+        }
+        
+        switch (schemaVersion) {
+            case 1: upgradeFromV1(doc); break;
+        }
+        return true;
+    }
+
+    private void upgradeFromV1(Document doc) {
+        doc.append("customerType", "B2C");
+        doc.put("schemaVersion", 2);
     }
 
 }
