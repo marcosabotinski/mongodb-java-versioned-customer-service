@@ -1,3 +1,3 @@
 db:
-    connectionstring: mongodb+srv://meetup:meetup@demo.u7tep.mongodb.net/test?authSource=admin&replicaSet=atlas-91rckg-shard-0&readPreference=primary&appname=MongoDB%20Compass&ssl=true
+    connectionstring: mongodb+srv://connectionstring
     databasename: example
